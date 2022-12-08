@@ -130,6 +130,7 @@
   <ItemGroup>
     <ClCompile Include="CommandProcessor.cpp" />
     <ClCompile Include="ConfigHandler.cpp" />
+    <ClCompile Include="Console.cpp" />
     <ClCompile Include="Functions.cpp" />
     <ClCompile Include="HelpHandler.cpp" />
     <ClCompile Include="InstallationHandler.cpp" />
@@ -141,6 +142,7 @@
   <ItemGroup>
     <ClInclude Include="CommandProcessor.h" />
     <ClInclude Include="ConfigHandler.h" />
+    <ClInclude Include="Console.h" />
     <ClInclude Include="Functions.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="HelpHandler.h" />

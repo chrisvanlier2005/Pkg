@@ -21,6 +21,7 @@
 #include "ConfigHandler.h"
 #include "InstallationHandler.h"
 #include "ScaffoldHandler.h"
+#include "Console.h"
 // colored output
 #define RESET   "\033[0m"
 #define BLACK   "\033[30m"      /* Black */
