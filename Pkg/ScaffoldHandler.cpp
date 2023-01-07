@@ -116,3 +116,18 @@ bool ScaffoldHandler::ExtractAndRemove(string& zipPath) {
 	mz_zip_reader_end(&zip_archive);
 	std::remove(zipPath.c_str());
 }
+
+void ScaffoldHandler::ListAvailableScaffolds(string& language) {
+	// this will list out all available scaffolds for this language
+	using json = nlohmann::json;
+	string response = Request::Make("http://packagemanager.chrisvanlier.nl/scaffold.php?list=" + language);
+	json list = json::parse(response);
+
+	Console::SetColor(BOLDMAGENTA);
+	Console::Write("AVAILABLE SCAFFOLDS");
+	Console::Serperator();
+	for (auto& [key,value] : list.items())
+	{
+		Console::Write(value);
+	}
+}

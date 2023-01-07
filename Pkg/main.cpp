@@ -17,11 +17,6 @@ int main(int argc, char *argv[]) {
 	{
 		arguments.push_back(argv[i]);
 	}
-	string value = "joe";
-	if (in_array(value, arguments))
-	{
-		cout << "arguments has joe! :)";
-	}
 	CommandProcessor::GetCommandAction(arguments);
 	return 0;
 }

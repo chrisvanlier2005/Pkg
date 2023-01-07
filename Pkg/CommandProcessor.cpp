@@ -157,8 +157,21 @@ void CommandProcessor::GetCommandAction(vector<string>& arguments) {
 				cout << YELLOW << "Please provide a scaffold name" << RESET;
 				exit(0);
 			}
+			string scaffoldAction = arguments[2];
 			string scaffoldName = arguments[2];
-			ScaffoldHandler::Install(scaffoldName);
+			string language = scaffoldName.substr(0, scaffoldName.find('/'));
+			if (scaffoldAction == "list" || scaffoldAction == "l")
+			{
+				if (arguments.size() != 4)
+				{
+					cout << RED << "please provide a language to list" << RESET << endl;
+					exit(0);
+				}
+				language = arguments[3];
+				ScaffoldHandler::ListAvailableScaffolds(language);
+			} else {
+				ScaffoldHandler::Install(scaffoldAction);
+			}
 		}
 		break;
 		case noCommand:

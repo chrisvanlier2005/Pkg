@@ -12,7 +12,7 @@ void Console::Write(std::string text) {
 	text.clear();
 }
 
-void Console::Serperator(int length = 10, char character = '-')
+void Console::Serperator(int length, char character)
 {
 	for (size_t i = 0; i < length; i++)
 	{
