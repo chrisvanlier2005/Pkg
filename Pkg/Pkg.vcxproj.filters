@@ -27,9 +27,6 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Request.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CommandProcessor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -45,14 +42,23 @@
     <ClCompile Include="InstallationHandler.cpp">
       <Filter>Source Files\Handlers</Filter>
     </ClCompile>
-    <ClCompile Include="PackageHandler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ScaffoldHandler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Console.cpp">
       <Filter>Source Files\Methods</Filter>
+    </ClCompile>
+    <ClCompile Include="PackageHandler.cpp">
+      <Filter>Source Files\Handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="ScaffoldHandler.cpp">
+      <Filter>Source Files\Handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="Request.cpp">
+      <Filter>Source Files\Methods</Filter>
+    </ClCompile>
+    <ClCompile Include="RunScript.cpp">
+      <Filter>Source Files\Handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="Storage.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -77,13 +83,19 @@
     <ClInclude Include="InstallationHandler.h">
       <Filter>Header Files\Handlers</Filter>
     </ClInclude>
-    <ClInclude Include="PackageHandler.h">
+    <ClInclude Include="Console.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PackageHandler.h">
+      <Filter>Header Files\Handlers</Filter>
     </ClInclude>
     <ClInclude Include="ScaffoldHandler.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Handlers</Filter>
     </ClInclude>
-    <ClInclude Include="Console.h">
+    <ClInclude Include="RunScript.h">
+      <Filter>Header Files\Handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="Storage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

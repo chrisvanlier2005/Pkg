@@ -3,3 +3,4 @@
 std::string currentPath();
 bool in_array(const std::string &value, const std::vector<std::string> &array);
 bool replace(std::string& str, const std::string& from, const std::string& to);
+void error(const std::string& error_message);

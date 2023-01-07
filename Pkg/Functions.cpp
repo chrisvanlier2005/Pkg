@@ -1,6 +1,6 @@
 #include "Globals.h"
 #include <direct.h>
-
+using namespace std;
 
 std::string currentPath() {
 	char buff[FILENAME_MAX]; // een string om het huidige path bij te houden
@@ -45,4 +45,10 @@ bool replace(std::string& str, const std::string& from, const std::string& to) {
 		return false;
 	str.replace(start_pos, from.length(), to);
 	return true;
+}
+
+void error(const string& error_message)
+{
+	cout << RED << "Error: " << RESET << error_message << endl;
+	exit(0);
 }

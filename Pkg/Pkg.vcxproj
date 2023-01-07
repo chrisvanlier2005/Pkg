@@ -137,7 +137,9 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PackageHandler.cpp" />
     <ClCompile Include="Request.cpp" />
+    <ClCompile Include="RunScript.cpp" />
     <ClCompile Include="ScaffoldHandler.cpp" />
+    <ClCompile Include="Storage.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CommandProcessor.h" />
@@ -149,7 +151,9 @@
     <ClInclude Include="InstallationHandler.h" />
     <ClInclude Include="PackageHandler.h" />
     <ClInclude Include="Request.h" />
+    <ClInclude Include="RunScript.h" />
     <ClInclude Include="ScaffoldHandler.h" />
+    <ClInclude Include="Storage.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

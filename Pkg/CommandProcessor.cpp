@@ -11,18 +11,25 @@ enum Options {
 	update,
 	listPackages,
 	removePackage,
+	run,
 	noCommand,
 	scaffold
 };
 
-Options HashIt(std::string const& inString) {
-	if (inString == "install" || inString == "i") return install;
-	if (inString == "help" || inString == "h") return help;
-	if (inString == "update" || inString == "u") return update;
-	if (inString == "list" || inString == "l") return listPackages;
-	if (inString == "initialize" || inString == "init") return initialize;
-	if (inString == "remove" || inString == "r") return removePackage;
-	if (inString == "scaffold" || inString == "s") return scaffold;
+
+
+/*
+ * Todo: find better solution, 
+ */
+Options HashIt(string const& string_input) {
+	if (string_input == "install" || string_input == "i") return install;
+	else if (string_input == "remove" || string_input == "rm") return removePackage;
+	else if (string_input == "run" || string_input == "r") return run;
+	else if (string_input == "update" || string_input == "u") return update;
+	else if (string_input == "list" || string_input == "l") return listPackages;
+	else if (string_input == "initialize" || string_input == "init") return initialize;
+	else if (string_input == "scaffold" || string_input == "s") return scaffold;
+	else if (string_input == "help" || string_input == "h") return help;
 	return noCommand;
 }
 
@@ -30,7 +37,7 @@ void CommandProcessor::GetCommandAction(vector<string>& arguments) {
 	string command  = arguments[1];
 	switch (HashIt(command))
 	{
-		case initialize:
+	case initialize:
 		{
 			if (ConfigHandler::CreateConfigFile())
 			{
@@ -41,18 +48,17 @@ void CommandProcessor::GetCommandAction(vector<string>& arguments) {
 			}
 		}
 		break;
-		case install:
+	case install:
 		{
 			json config = ConfigHandler::GetConfigFile();
 
-			// expects a second argument
 			if (arguments.size() == 2)
 			{
-				cout << "Please provide a package name";
+				cout << RED << "Error: " << RESET << "Please provide a package name\n";
 				return;
 			}
 			if (!ConfigHandler::ConfigExists) {
-				cout << "No PKGConfig.json exists in this scope" << endl;
+				cout << "No PKGConfig.json exists in this scope\n";
 				return;
 			}
 			cout << "Proceeding installation of " << arguments[2] << endl;
@@ -70,7 +76,7 @@ void CommandProcessor::GetCommandAction(vector<string>& arguments) {
 			}
 		}
 		break;
-		case removePackage:
+	case removePackage:
 		{
 			json config = ConfigHandler::GetConfigFile();
 			if (arguments.size() == 2)
@@ -94,7 +100,7 @@ void CommandProcessor::GetCommandAction(vector<string>& arguments) {
 
 			}
 		}
-		case help: 
+	case help: 
 		{
 			if (arguments.size() == 2)
 			{
@@ -120,12 +126,12 @@ void CommandProcessor::GetCommandAction(vector<string>& arguments) {
 			}
 		}
 		break;
-		case update:
+	case update:
 		{
-
+			cout << RED << "Error:" << RESET << "This function has not been implemented as of yet.\n";
 		}
 		break;
-		case listPackages:
+	case listPackages:
 		{
 			curlpp::Cleanup myCleanup;
 
@@ -150,7 +156,7 @@ void CommandProcessor::GetCommandAction(vector<string>& arguments) {
 			}
 		}
 		break;
-		case scaffold:
+	case scaffold:
 		{
 			if (arguments.size() == 2)
 			{
@@ -174,11 +180,32 @@ void CommandProcessor::GetCommandAction(vector<string>& arguments) {
 			}
 		}
 		break;
+	case run:
+		{
+			json config = ConfigHandler::GetConfigFile();
+			if (arguments.size() < 3)
+			{
+				string message = "Expected 3 arguments, got: " + to_string(arguments.size());
+				cout << message << endl;
+				error(message);
+			}
+			string scriptName = arguments[2];
+			if(!RunScript::validate(scriptName))
+			{
+				error("Script '" + scriptName + "' Does not exist");
+			}
+			if (RunScript::run(scriptName))
+			{
+				cout << GREEN << "Success! " << RESET << "Script executed successfully\n";
+			}
+			else
+			{
+				error("Something went wrong while executing");
+			}
+		}
+		break;
 		case noCommand:
 		{
-			// set color to red
-			cout << "\033[1;31mCommand does not exist, use command help / h for a list of commands.\033[0m" << endl;
-			
 			exit(0);
 		}
 		default:
